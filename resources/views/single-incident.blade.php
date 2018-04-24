@@ -11,15 +11,19 @@
 @stop
 
 @section('content')
-<h1>{{ $incident->name }} <small>{{ $incident->occurred_at_formatted }}</small></h1>
+<article>
+<section>
+<small>{{ $incident->occurred_at_formatted }}</small>
+<h1>{{ $incident->name }}</h1>
 
 <hr>
 
 <div class="markdown-body">
     {!! $incident->formatted_message !!}
 </div>
-
+</section>
 @if($incident->updates)
+<section>
 <div class="timeline">
     <div class="content-wrapper">
         @foreach ($incident->updates as $update)
@@ -57,7 +61,9 @@
         @endforeach
     </div>
 </div>
+</section>
 @endif
+</article>
 @stop
 
 @section('bottom-content')

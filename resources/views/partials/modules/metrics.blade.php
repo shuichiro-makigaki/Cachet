@@ -1,4 +1,5 @@
 @if($displayMetrics && $appGraphs)
+<section>
 <div class="section-metrics">
     @if($metrics->count() > 0)
     <ul class="list-group">
@@ -10,4 +11,5 @@
     </ul>
     @endif
 </div>
+</section>
 @endif

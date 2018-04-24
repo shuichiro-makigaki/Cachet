@@ -1,6 +1,7 @@
 @if($daysToShow > 0 && $allIncidents)
+<section>
 <div class="section-timeline">
-    <h1>{{ trans('cachet.incidents.past') }}</h1>
+    <h2 id="past-incidents">{{ trans('cachet.incidents.past') }}</h2>
     @foreach($allIncidents as $date => $incidents)
     @include('partials.incidents', [compact($date), compact($incidents)])
     @endforeach
@@ -24,4 +25,5 @@
         @endif
     </ul>
 </nav>
+</section>
 @endif
