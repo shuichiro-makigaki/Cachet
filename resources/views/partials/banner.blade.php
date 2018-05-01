@@ -1,3 +1,4 @@
+<header>
 @if($app_header)
 {!! $app_header !!}
 @else
@@ -17,3 +18,4 @@
 </div>
 @endif
 @endif
+</header>

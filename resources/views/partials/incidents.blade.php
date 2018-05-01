@@ -1,7 +1,9 @@
-<h4 class="incident-date week-{{ day_of_week($date) }}">{{ formatted_date($date) }}</h4>
+<article>
+<h3 class="incident-date week-{{ day_of_week($date) }}">{{ formatted_date($date) }}</h3>
 <div class="timeline">
     <div class="content-wrapper">
         @forelse($incidents as $incident)
+        <article>
         <div class="moment {{ $loop->first ? 'first' : null }}">
             <div class="row event clearfix">
                 <div class="col-sm-1">
@@ -21,7 +23,7 @@
                             @if($incident->component)
                             <span class="label label-default">{{ $incident->component->name }}</span>
                             @endif
-                            <strong>{{ $incident->name }}</strong>{{ $incident->isScheduled ? trans("cachet.incidents.scheduled_at", ["timestamp" => $incident->scheduled_at_diff]) : null }}
+                            <h1>{{ $incident->name }}</h1>{{ $incident->isScheduled ? trans("cachet.incidents.scheduled_at", ["timestamp" => $incident->scheduled_at_diff]) : null }}
                             <br>
                             <small class="date">
                                 <a href="{{ cachet_route('incident', ['id' => $incident->id]) }}" class="links"><abbr class="timeago" data-toggle="tooltip" data-placement="right" title="{{ $incident->timestamp_formatted }}" data-timeago="{{ $incident->timestamp_iso }}"></abbr></a>
@@ -53,12 +55,16 @@
                 </div>
             </div>
         </div>
+        </article>
         @empty
+        <article>
         <div class="panel panel-message incident">
             <div class="panel-body">
                 <p>{{ trans('cachet.incidents.none') }}</p>
             </div>
         </div>
+        </article>
         @endforelse
     </div>
 </div>
+</article>
