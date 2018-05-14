@@ -27,6 +27,6 @@ trait Taggable
      */
     public function tags()
     {
-        return $this->morphMany(TaggableModel::class, 'taggable');
+        return $this->morphMany(TaggableModel::class, 'taggable', null, null, 'tag_id');
     }
 }

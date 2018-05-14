@@ -150,10 +150,10 @@ class ComponentController extends Controller
 
         // For every tag, do we need to create it?
         $componentTags = array_map(function ($taggable) {
-            return Tag::firstOrCreate(['name' => $taggable])->id;
+            return Tag::firstOrCreate(['name' => $taggable]);
         }, $tags);
 
-        $component->tags()->sync($componentTags);
+        $component->tags()->saveMany($componentTags);
 
         return cachet_redirect('dashboard.components.edit', [$component->id])
             ->withSuccess(sprintf('%s %s', trans('dashboard.notifications.awesome'), trans('dashboard.components.edit.success')));
@@ -204,10 +204,10 @@ class ComponentController extends Controller
 
         // For every tag, do we need to create it?
         $componentTags = array_map(function ($taggable) {
-            return Tag::firstOrCreate(['name' => $taggable])->id;
+            return Tag::firstOrCreate(['name' => $taggable]);
         }, $tags);
 
-        $component->tags()->sync($componentTags);
+        $component->tags()->saveMany($componentTags);
 
         return cachet_redirect('dashboard.components')
             ->withSuccess(sprintf('%s %s', trans('dashboard.notifications.awesome'), trans('dashboard.components.add.success')));

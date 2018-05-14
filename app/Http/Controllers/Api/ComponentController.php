@@ -92,10 +92,10 @@ class ComponentController extends AbstractApiController
             $componentTags = array_map(function ($taggable) use ($component) {
                 return Tag::firstOrCreate([
                     'name' => $taggable,
-                ])->id;
+                ]);
             }, $tags);
 
-            $component->tags()->sync($componentTags);
+            $component->tags()->saveMany($componentTags);
         }
 
         return $this->item($component);
@@ -132,10 +132,10 @@ class ComponentController extends AbstractApiController
 
             // For every tag, do we need to create it?
             $componentTags = array_map(function ($taggable) use ($component) {
-                return Tag::firstOrCreate(['name' => $taggable])->id;
+                return Tag::firstOrCreate(['name' => $taggable]);
             }, $tags);
 
-            $component->tags()->sync($componentTags);
+            $component->tags()->saveMany($componentTags);
         }
 
         return $this->item($component);
